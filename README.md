@@ -40,6 +40,7 @@ Este é um sistema básico para gerenciar moedas com diferentes valores. O usuá
 ## API Endpoints
 
 - `GET /api/moedas`: Lista todas as moedas disponíveis
+- `GET /api/moedas/:id`: Retorna uma moeda específica pelo ID
 - `GET /api/saldo`: Retorna o saldo atual
 - `POST /api/adicionar`: Adiciona moedas ao saldo
 - `POST /api/vender`: Vende moedas do saldo

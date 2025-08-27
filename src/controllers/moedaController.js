@@ -13,6 +13,31 @@ const moedaController = {
     }
   },
 
+  // Obter uma moeda específica pelo ID
+  obterMoedaPorId: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const moedaId = parseInt(id);
+      
+      if (isNaN(moedaId)) {
+        return res.status(400).json({ mensagem: 'ID da moeda inválido' });
+      }
+      
+      const moeda = await prisma.moeda.findUnique({
+        where: { id: moedaId }
+      });
+      
+      if (!moeda) {
+        return res.status(404).json({ mensagem: 'Moeda não encontrada' });
+      }
+      
+      return res.status(200).json(moeda);
+    } catch (error) {
+      console.error('Erro ao obter moeda por ID:', error);
+      return res.status(500).json({ mensagem: 'Erro ao obter moeda por ID', erro: error.message });
+    }
+  },
+
   // Obter o saldo atual
   obterSaldo: async (req, res) => {
     try {

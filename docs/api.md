@@ -51,6 +51,36 @@ Retorna a lista de todas as moedas disponíveis no sistema.
 ]
 ```
 
+### Obter Moeda por ID
+
+Retorna uma moeda específica pelo seu ID.
+
+- **URL**: `/moedas/:id`
+- **Método**: `GET`
+- **Parâmetros da URL**:
+  - `id`: ID da moeda a ser consultada
+- **Resposta de Sucesso**:
+  - **Código**: 200
+  - **Conteúdo**: Objeto da moeda
+
+```json
+{
+  "id": 1,
+  "nome": "MOEDA 1",
+  "valor": 5,
+  "quantidade": 10,
+  "createdAt": "2025-08-27T14:30:00.000Z",
+  "updatedAt": "2025-08-27T14:30:00.000Z"
+}
+```
+
+- **Resposta de Erro**:
+  - **Código**: 400
+    - **Conteúdo**: `{ "mensagem": "ID da moeda inválido" }`
+  - **Código**: 404
+    - **Conteúdo**: `{ "mensagem": "Moeda não encontrada" }`
+```
+
 ### Obter Saldo
 
 Retorna o saldo atual do sistema.

@@ -5,6 +5,9 @@ const moedaController = require('../controllers/moedaController');
 // Rota para listar todas as moedas
 router.get('/moedas', moedaController.listarMoedas);
 
+// Rota para obter uma moeda específica pelo ID
+router.get('/moedas/:id', moedaController.obterMoedaPorId);
+
 // Rota para obter o saldo atual
 router.get('/saldo', moedaController.obterSaldo);
 

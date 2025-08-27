@@ -88,7 +88,7 @@ model Saldo {
 ### Base URL
 
 ```
-http://localhost:3000/api
+https://arquivoteste.onrender.com/api
 ```
 
 Em produção, a URL será fornecida pela Render.
@@ -104,6 +104,23 @@ Retorna a lista de todas as moedas disponíveis no sistema.
 - **Resposta de Sucesso**:
   - **Código**: 200
   - **Conteúdo**: Array de objetos de moedas
+
+#### 2. Obter Moeda por ID
+
+Retorna uma moeda específica pelo seu ID.
+
+- **URL**: `/moedas/:id`
+- **Método**: `GET`
+- **Parâmetros da URL**:
+  - `id`: ID da moeda a ser consultada
+- **Resposta de Sucesso**:
+  - **Código**: 200
+  - **Conteúdo**: Objeto da moeda
+- **Resposta de Erro**:
+  - **Código**: 400
+    - **Conteúdo**: `{ "mensagem": "ID da moeda inválido" }`
+  - **Código**: 404
+    - **Conteúdo**: `{ "mensagem": "Moeda não encontrada" }`
 
 **Exemplo de Resposta:**
 
@@ -136,7 +153,20 @@ Retorna a lista de todas as moedas disponíveis no sistema.
 ]
 ```
 
-#### 2. Obter Saldo
+**Exemplo de Resposta para Obter Moeda por ID:**
+
+```json
+{
+  "id": 1,
+  "nome": "MOEDA 1",
+  "valor": 5,
+  "quantidade": 10,
+  "createdAt": "2025-08-27T14:30:00.000Z",
+  "updatedAt": "2025-08-27T14:30:00.000Z"
+}
+```
+
+#### 3. Obter Saldo
 
 Retorna o saldo atual do sistema.
 
@@ -157,7 +187,7 @@ Retorna o saldo atual do sistema.
 }
 ```
 
-#### 3. Adicionar Moeda
+#### 4. Adicionar Moeda
 
 Adiciona uma quantidade de moedas ao sistema e atualiza o saldo.
 
@@ -193,7 +223,7 @@ Adiciona uma quantidade de moedas ao sistema e atualiza o saldo.
 }
 ```
 
-#### 4. Vender Moeda
+#### 5. Vender Moeda
 
 Vende uma quantidade de moedas do sistema e atualiza o saldo.
 
@@ -242,19 +272,19 @@ Vende uma quantidade de moedas do sistema e atualiza o saldo.
 ### Listar Moedas
 
 ```bash
-curl -X GET http://localhost:3000/api/moedas
+curl -X GET https://arquivoteste.onrender.com/api/moedas
 ```
 
 ### Obter Saldo
 
 ```bash
-curl -X GET http://localhost:3000/api/saldo
+curl -X GET https://arquivoteste.onrender.com/api/saldo
 ```
 
 ### Adicionar Moeda
 
 ```bash
-curl -X POST http://localhost:3000/api/adicionar \
+curl -X POST https://arquivoteste.onrender.com/api/adicionar \
   -H "Content-Type: application/json" \
   -d '{"moedaId": 1, "quantidade": 2}'
 ```
@@ -262,7 +292,7 @@ curl -X POST http://localhost:3000/api/adicionar \
 ### Vender Moeda
 
 ```bash
-curl -X POST http://localhost:3000/api/vender \
+curl -X POST https://arquivoteste.onrender.com/api/vender \
   -H "Content-Type: application/json" \
   -d '{"moedaId": 1, "quantidade": 2}'
 ```
