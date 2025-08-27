@@ -1,0 +1,23 @@
+services:
+  # Serviço para o backend
+  - type: web
+    name: sistema-moedas-api
+    env: node
+    buildCommand: npm install
+    startCommand: node src/server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: DATABASE_URL
+        fromDatabase:
+          name: sistema-moedas-db
+          property: connectionString
+
+# Banco de dados PostgreSQL
+databases:
+  - name: sistema-moedas-db
+    plan: free
+    databaseName: sistema_moedas
+    ipAllowList: [] # Permite acesso de qualquer lugar
